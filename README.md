@@ -15,7 +15,7 @@ pip install -r requirements.txt
 *tips:*
 - make a env file with your local DB
 - Anything that involves the DB should have DB_ as var name 
-```bash
+```env
 DB_URL=<URL>
 DB_DB=<DB_NAME>
 ext...
