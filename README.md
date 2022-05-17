@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-# ServerDiscordBot
-Lord Beamer
-=======
 # Basic Discord Bot With Cogs
 
 *This bot uses MongoDB for storage* - [MongoDB](https://www.mongodb.com/)
@@ -9,6 +5,3 @@ Lord Beamer
 - Tutorial on how to create a Db with mongo Atlas: [here](https://www.mongodb.com/docs/atlas/getting-started/)
 
 **[]: # pip3 install -r requirements.txt**
-
-
->>>>>>> Stashed changes
