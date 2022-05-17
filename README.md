@@ -12,12 +12,12 @@ pip install -r requirements.txt
 
 # Getting Started
 
-    *tips:*
-    - make a env file with your local DB
-    - Anything that involves the DB should have DB_ as var name 
-        - ```bash
-            DB_URL=<URL>
-            DB_DB=<DB_NAME>
-            ext...
-            ```
-    - If you want to use a local DB, you can use the `local` DB_URL
+*tips:*
+- make a env file with your local DB
+- Anything that involves the DB should have DB_ as var name 
+```bash
+DB_URL=<URL>
+DB_DB=<DB_NAME>
+ext...
+```
+- If you want to use a local DB, you can use the `local` DB_URL
