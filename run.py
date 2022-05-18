@@ -54,4 +54,4 @@ async def uptime(): #uptime
 
 env_dict = dict(os.environ) #supposally this is faster than a regular call to os.environ
 bot.loop.create_task(uptime())
-bot.run(env_dict['TESTBOT'])
+bot.run(env_dict['TOKEN'])
