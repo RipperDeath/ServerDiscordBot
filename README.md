@@ -20,12 +20,12 @@ pip install -r requirements.txt
 - Tutorial on how to create a Db with mongo Atlas: [here](https://www.mongodb.com/docs/atlas/getting-started/)
 
 **Tips:**
-- make a env file with your local DB
+- make a env file with your access link
 - Anything that involves the DB should have DB_ as var name 
     ```env
     #ex of env file
     DB_URL=<URL>
-    DB_DB=<DB_NAME>
+    DB_NAME=<DB NAME>
     #ect...
     ```
 - If you want to use a local DB, you can use the `local` DB_URL
