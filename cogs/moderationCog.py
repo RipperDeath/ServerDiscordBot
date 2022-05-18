@@ -103,20 +103,17 @@ class Moderation(ModErrorhandler):
         mutedRole = discord.utils.get(ctx.guild.roles, name="muted")
         await member.add_roles(mutedRole)
         #adds user to the database
-        print("making db strcture")
         try:
             print(member.guild.name)
             #set first char in guild name to uppercase exept the first character
             guild = "".join([word[0].upper() + word[1:] for word in member.guild.name.lower().split(" ")])
             #make first character of guild name lowercase
             guild = guild[0].lower() + guild[1:]
-            print(guild)
             self.db = self.client[guild]
             post = {"_id": int(member.id), "author": str(ctx.author), "usermuted": str(member.name+"#"+member.discriminator), "reason": reason, "time": time, "date": datetime.datetime.utcnow()}
             coll = self.db["mutedUsers"]
         except Exception as e:
             print(e)
-            print("could not make db structure")
             return
 
         print("adding to db")
@@ -128,13 +125,10 @@ class Moderation(ModErrorhandler):
                 coll.update_one({"_id": int(member.id)}, {"$set": {"author": str(ctx.author), "usermuted": str(member.name+"#"+member.discriminator), "reason": reason, "time": time, "date": datetime.datetime.utcnow()}})
         except Exception as e:
             print(e)
-        print("posted to db")
         #timer to remove muted role
         await asyncio.sleep(time)
         await member.remove_roles(mutedRole)
-        print("removed muted role")
         coll.delete_one({"_id": int(member.id)})
-        print("removed from db")
 
     @commands.command()
     async def unmute(self, ctx, member: discord.Member):
