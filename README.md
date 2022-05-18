@@ -5,7 +5,7 @@
 - Uses embeds for asthetics
 - makes a DB for every guild it interacts with collections corresponding to bans, kicks and mutes.
     ```python
-    #ex with muting a user makes a tree like <guild> -> usersMuted -> <data>:
+    #ex with muting a user makes a tree like <guild> -> usersMuted -> <user>:
     {"_id": int(member.id), "author": str(ctx.author), "usermuted": str(member.name+"#"+member.discriminator), "reason": reason, "time": time, "date": datetime.datetime.utcnow()}
     ```
 ### Installation
@@ -26,6 +26,6 @@ pip install -r requirements.txt
     #ex of env file
     DB_URL=<URL>
     DB_DB=<DB_NAME>
-    ect...
+    #ect...
     ```
 - If you want to use a local DB, you can use the `local` DB_URL
