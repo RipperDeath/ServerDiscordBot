@@ -3,9 +3,8 @@ import json
 import asyncio
 import discord
 from dotenv import load_dotenv
-from discord.ext import commands
+from discord.ext import commands, tasks
 load_dotenv()
-
 
 # get stuff from config.json instead of hardcoding
 with open('config.json') as f:
@@ -28,12 +27,15 @@ for extension in startup_extensions:
         print(f"{extension} loaded")
     except Exception as e:
         exc = '{}: {}'.format(type(e).__name__, e)
-        print('Failed to load extension {}\n{}'.format(extension, exc))
+        print(f'Failed to load extension {extension}\n{exc}')
 
 @bot.event
 async def on_ready():
     print(f"{bot.user} is now online!")
+    uptime.start()
 
+# uptime counter
+@tasks.loop(seconds=1)
 async def uptime(): #uptime
     await bot.wait_until_ready()
     timeCounter = 0
@@ -53,5 +55,5 @@ async def uptime(): #uptime
             counter = 0
 
 env_dict = dict(os.environ) #supposally this is faster than a regular call to os.environ
-bot.loop.create_task(uptime())
+#bot.loop.create_task(uptime())
 bot.run(env_dict['TESTBOT'])
