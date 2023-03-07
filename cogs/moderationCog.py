@@ -50,7 +50,7 @@ class Moderation(ModErrorhandler):
         kickedUser = self.db["kickedUsers"]
 
         embed = discord.Embed(color=discord.colour.Color.red())
-        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar)
         embed.add_field(name="kick", value=f"{ctx.author} kicked {member.name}", inline=False)
         embed.add_field(name="Reason", value=reason, inline=False)
         await member.kick(reason=reason)
@@ -65,7 +65,7 @@ class Moderation(ModErrorhandler):
         bannedUser = self.db["bannedUsers"]
 
         embed = discord.Embed(color=discord.colour.Color.red())
-        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar)
         embed.add_field(name="ban", value=f"{ctx.author} banned {member.name}", inline=False)
         embed.add_field(name="Reason", value=reason, inline=False)
         await member.ban(reason=reason)
@@ -86,7 +86,7 @@ class Moderation(ModErrorhandler):
             if (user.name, user.discriminator) == (member_name, member_discriminator):
                 await ctx.guild.unban(user)
                 embed = discord.Embed(color=discord.colour.Color.green())
-                embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+                embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar)
                 embed.add_field(name="unban", value=f"{ctx.author} unbanned {user.name}", inline=False)
                 bannedUser.delete_one({"_id": user.id})
                 await ctx.send(embed=embed)
@@ -94,7 +94,7 @@ class Moderation(ModErrorhandler):
     @commands.command()
     async def mute(self, ctx, member: discord.Member, reason=None, time=0):
         embed = discord.Embed(color=discord.colour.Color.red())
-        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar)
         embed.add_field(name="mute", value=f"{ctx.author} muted {member.name}", inline=False)
         embed.add_field(name="Reason", value=reason, inline=False)
         embed.add_field(name="Time", value=time, inline=False)
@@ -138,7 +138,7 @@ class Moderation(ModErrorhandler):
         mutedUser = self.db["mutedUsers"]
 
         embed = discord.Embed(color=discord.colour.Color.green())
-        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar)
         embed.add_field(name="unmute", value=f"{ctx.author} unmuted {member.name}", inline=False)
         await member.remove_roles(discord.utils.get(ctx.guild.roles, name="muted"))
         mutedUser.delete_one({"_id": member.id})

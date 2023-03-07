@@ -27,7 +27,7 @@ class MiscCommands(commands.Cog):
             usersMuted = next(self.db.mutedUsers.find())
         except StopIteration:
             embed = discord.Embed(color=discord.colour.Color.red())
-            embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+            embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar)
             embed.add_field(name="Muted", value="No one is muted", inline=False)
             return await ctx.send(embed=embed)
 
@@ -40,7 +40,7 @@ class MiscCommands(commands.Cog):
             elif key == "time":
                 mutedUsers.append(str(value))
         embed = discord.Embed(color=0x00ff00)
-        embed.set_author(name=f'{ctx.author.name}!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name}!', icon_url=ctx.author.avatar)
         embed.add_field(name="Muted Users", value=mutedUsers[0], inline=True)
         embed.add_field(name="Time Left", value=mutedUsers[1], inline=True)
         return await ctx.send(embed=embed)
@@ -51,7 +51,7 @@ class MiscCommands(commands.Cog):
             usersBanned = next(self.db.bannedUsers.find())
         except StopIteration:
             embed = discord.Embed(color=discord.colour.Color.red())
-            embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+            embed.set_author(name=f"{ctx.author}", icon_url=ctx.author.avatar)
             embed.add_field(name="Banned", value="No one is banned", inline=False)
             return await ctx.send(embed=embed)
         
@@ -61,10 +61,8 @@ class MiscCommands(commands.Cog):
             if key == "userbanned":
                 bannedUsers.append(value)
                 continue
-            elif key == "timeleft":
-                bannedUsers.append(str(value))
         embed = discord.Embed(color=0x00ff00)
-        embed.set_author(name=f'{ctx.author.name}!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name}!', icon_url=ctx.author.avatar)
         embed.add_field(name="Banned Users", value=bannedUsers, inline=True)
         return await ctx.send(embed=embed)
     
