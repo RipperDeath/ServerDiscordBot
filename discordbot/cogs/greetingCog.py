@@ -56,5 +56,5 @@ class Greetings(commands.Cog):
         
         print(f'{message.author} in {message.channel}: {message.content}')
 
-def setup(bot):
-    bot.add_cog(Greetings(bot))
+async def setup(bot):
+    await bot.add_cog(Greetings(bot))

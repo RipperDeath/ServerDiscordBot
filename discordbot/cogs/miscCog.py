@@ -66,5 +66,5 @@ class MiscCommands(commands.Cog):
         embed.add_field(name="Banned Users", value=bannedUsers, inline=True)
         return await ctx.send(embed=embed)
     
-def setup(bot):
-    bot.add_cog(MiscCommands(bot))
+async def setup(bot):
+    await bot.add_cog(MiscCommands(bot))

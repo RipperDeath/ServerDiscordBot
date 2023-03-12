@@ -76,5 +76,5 @@ class HelpCommands(MiscHelpCommands, ModHelpCommands):
             embed.add_field(name="Moderation Usage", value="Kick, Ban, Mute", inline=False)
             await ctx.send(embed=embed)
 
-def setup(bot):
-    bot.add_cog(HelpCommands(bot))
+async def setup(bot):
+    await bot.add_cog(HelpCommands(bot))

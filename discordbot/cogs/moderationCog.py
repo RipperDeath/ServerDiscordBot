@@ -157,5 +157,5 @@ class Moderation(ModErrorhandler):
     async def mute_error(self, ctx, error):
         ModErrorhandler.mute_error(self, ctx, error)
 
-def setup(bot):
-    bot.add_cog(Moderation(bot))
+async def setup(bot):
+    await bot.add_cog(Moderation(bot))
